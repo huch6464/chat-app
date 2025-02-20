@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>chat</title>
+</head>
+<body class="overflow-hidden">
+    <div class="container-fluid d-flex flex-row p-0" style="height: 100vh;">
+        <div class="h-100 w-25 bg-primary-subtle overflow-y-scroll d-none d-md-block p-1">
+            <div class="list-group ">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Hussein Chavoshi</h6>
+                    <h6 style="font-size: 0.5rem;">3 days ago</h6>
+                  </div>
+                </a>
+            </div>
+         </div>     
+            <nav class="navbar bg-body-tertiary bg-primary-subtle p-1 d-block d-md-none">
+                  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-body">
+                        <div class="list-group ">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                              <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Hussein Chavoshi</h5>
+                                <small>3 days ago</small>
+                              </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+              </nav>
+      
+        <div class="h-100 w-100 bg-primary-subtle d-flex flex-column overflow-y-scroll" >
+            <div class="res px-4 py-2 text-start d-flex flex-column">
+                <span class="w-50 d-inline-block text-break text-bg-info p-3 rounded">سلام کجایی </span>
+                <span style="font-size: 0.5rem;">18 : 23 : 36</span>
+            </div>
+            <div class="send px-4 py-2 text-end d-flex flex-column">
+              <span class=" text-break  p-3 rounded">سلام خونه هستم </span>
+              <span class="px-4" style="font-size: 0.5rem;">18 : 23 : 36</span>
+            </div>
+            <div class="input-group input-group-lg p-3 mt-auto ">
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+              <span class="input-group-text" id="inputGroup-sizing-lg">send</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
