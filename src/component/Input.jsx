@@ -1,11 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { userContext } from '../context/usersContext';
 import {v4 as uuidv4} from 'uuid';
 
 export default function Input() {
  const{state,dispatch} = useContext(userContext)
+ const input = useRef(null)
+ const[msg,setMsg] = useState('');
 
-    const[msg,setMsg] = useState('');
+
     const handleInputIsend = (e)=>{
         if(msg.trim()){
             dispatch({type:'FETCH_MSGES', payload: {
@@ -16,8 +18,10 @@ export default function Input() {
                 time: new Date().toLocaleTimeString()
             }})
             setMsg('')
+            input.current.focus();
         }
     }
+
     const handleInputOthersend = (e)=>{
         if(msg.trim()){
             dispatch({type:'FETCH_MSGES', payload: {
@@ -28,8 +32,18 @@ export default function Input() {
                 time: new Date().toLocaleTimeString()
             }})
             setMsg('')
+            input.current.focus();
         }
     }
+
+
+    useEffect(()=>{
+       if(state.isActiveId){
+           input.current.focus();
+       }
+    },[state.isActiveId])
+
+
     const userActive = state.users.find((item)=>(state.isActiveId === item.id))
 
    const userChatList = state.msges.filter((msg)=>((msg.sender === 'me' && msg.receiver === state.isActiveId) || (msg.sender === state.isActiveId && msg.receiver === 'me')));
@@ -47,9 +61,10 @@ export default function Input() {
   return (
     <>
         {state.isActiveId ?
-        <div className="bg-light text-center border">
-         <h3>{userActive.username}</h3>
-        <h5>{userActive.name}</h5>
+        <div className="bg-light text-center border d-flex justify-content-around align-items-center m-0 p-1">
+        <img  className="img-fluid" alt='img'/>
+         <h5 className="m-0">{userActive.username}</h5>
+        <h5 className="m-0">{userActive.name}</h5>
         </div>
          : ''}
         {state.isActiveId ? chatLIst : <div className="text-center m-auto">لطفا چت را انتخاب کنید</div>}
@@ -57,7 +72,7 @@ export default function Input() {
            {state.isActiveId ?
            <>
            <button onClick={handleInputOthersend} className="input-group-text" id="inputGroup-sizing-lg">{userActive.username} send </button>
-           <input onChange={(e)=>{setMsg(e.target.value)}} value={msg}  type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+           <input onChange={(e)=>{setMsg(e.target.value)}} value={msg} ref={input}  type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
            <button onClick={handleInputIsend} className="input-group-text" id="inputGroup-sizing-lg">I send </button>
            </>
            : ''}
