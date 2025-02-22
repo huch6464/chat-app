@@ -17,7 +17,9 @@ const initialState = {
     
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    
+    case 'LOADING':
+    state.status = 'loading'
+    return {...state, status:'loading'}
   case 'FETCH_USERS':
     state.status = 'success'
     return { ...state, users : payload }

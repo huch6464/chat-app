@@ -8,8 +8,10 @@ import axios from 'axios';
 export default function Users() {
     const{dispatch,state} = useContext(userContext);
     const users = state.users
+   
 
      useEffect(()=>{
+          dispatch({type:'LOADING'})
           axios.get('https://jsonplaceholder.typicode.com/users')
           .then(response=>
             dispatch({type:'FETCH_USERS',
@@ -17,9 +19,10 @@ export default function Users() {
       },[dispatch])
 
     const handleClick = (userId)=>{
-        dispatch({type:'SET_ISACTIVEID',payload:userId})
-        
+        dispatch({type:'SET_ISACTIVEID',payload:userId});
+       
     }
+    
  
     const userList = users.map((user)=>{
     return(

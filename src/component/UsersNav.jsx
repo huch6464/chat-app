@@ -1,6 +1,6 @@
 
 
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect,useState} from 'react'
 import { userContext } from '../context/usersContext';
 import axios from 'axios';
 
@@ -9,8 +9,10 @@ import axios from 'axios';
 export default function UsersNav() {
     const{dispatch,state} = useContext(userContext);
     const users = state.users
+     const[menuIsOpen,setMenuIsOpen] = useState(true);
 
      useEffect(()=>{
+          dispatch({type:'LOADING'})
           axios.get('https://jsonplaceholder.typicode.com/users')
           .then(response=>
             dispatch({type:'FETCH_USERS',
@@ -18,9 +20,11 @@ export default function UsersNav() {
       },[dispatch])
 
     const handleClick = (userId)=>{
-        dispatch({type:'SET_ISACTIVEID',payload:userId})
-        
+        dispatch({type:'SET_ISACTIVEID',payload:userId});
+        closeMenu();
     }
+    const closeMenu = ()=>{setMenuIsOpen(false)}
+
     const userList = users.map((user)=>{
         return(
         <div key={user.id} className="offcanvas-body p-0">
@@ -37,8 +41,7 @@ export default function UsersNav() {
     })
 
   return (
-    <div className="offcanvas offcanvas-end h-100  bg-primary-subtle overflow-y-scroll p-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      
+    <div className="offcanvas offcanvas-end h-100  bg-primary-subtle overflow-y-scroll p-1 w-75 " id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
            {userList}
             </div>
   )
