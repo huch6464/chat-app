@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container-fluid d-flex flex-row p-0" style={{height : '100vh'}}>
             <Users/>
-        <nav className="navbar bg-body-tertiary bg-primary-subtle d-block d-md-none  ">
+        <nav className="navbar bg-body-tertiary bg-primary-subtle d-block d-md-none">
               <button className="navbar-toggler m-2 " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon "></span>
               </button>

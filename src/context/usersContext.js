@@ -28,6 +28,10 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'SET_ISACTIVEID' :
     const item = state.users.find(item=>item.id === payload)
     return {...state, isActiveId : item.id}
+ case 'DELETE_MSG' :
+    const deleteItem = state.msges.find(item=>item.id === payload);
+    const newMsges = state.msges.filter(msg=> msg !== deleteItem)
+    return {...state, msges : newMsges}
   
     
   default:
