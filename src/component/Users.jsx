@@ -9,19 +9,22 @@ export default function Users() {
     const{dispatch,state} = useContext(userContext);
     const users = state.users
    
-
+    // https://jsonplaceholder.typicode.com/users
      useEffect(()=>{
-          dispatch({type:'LOADING'})
-          axios.get('https://jsonplaceholder.typicode.com/users')
-          .then(response=>
-            dispatch({type:'FETCH_USERS',
-                     payload : response.data}))
-      },[dispatch])
+      if(state.isLogin === true){
+        dispatch({type:'LOADING'})
+        axios.get('http://huch.local/wp-json/huch/v1/users')
+        .then(response=>
+          dispatch({type:'FETCH_USERS',
+                   payload : response.data}))
+          }
+    },[dispatch]);
+  
 
-    const handleClick = (userId)=>{
-        dispatch({type:'SET_ISACTIVEID',payload:userId});
-       
-    }
+  const handleClick = (userId)=>{
+      dispatch({type:'SET_ISACTIVEID',payload:userId});
+      }
+    
     
  
     const userList = users.map((user)=>{
@@ -29,6 +32,7 @@ export default function Users() {
         <a onClick={()=>handleClick(user.id)} key={user.id} className={`list-group-item list-group-item-action ${state.isActiveId === user.id ? 'active' : ''}`} aria-current="true">
            <div className="d-flex w-100 justify-content-between ">
               <h6 className="mb-1">{user.name}</h6>
+              <h6 className="mb-1">{user.family}</h6>
               <h6 style={{fontSize: '0.5rem'}}>3 days ago</h6>
            </div>
         </a>

@@ -13,6 +13,8 @@ const initialState = {
     msges : [],
     isActiveId:null,
     status : 'idle',
+    isLogin : false,
+    user : null
 }
     
 const reducer = (state = initialState, { type, payload }) => {
@@ -32,6 +34,9 @@ const reducer = (state = initialState, { type, payload }) => {
     const deleteItem = state.msges.find(item=>item.id === payload);
     const newMsges = state.msges.filter(msg=> msg !== deleteItem)
     return {...state, msges : newMsges}
+    case 'LOGIN':
+      state.isLogin = true
+      return { ...state, user : payload }
   
     
   default:

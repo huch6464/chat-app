@@ -1,0 +1,7 @@
+input{
+    outline: none;
+}
+::placeholder{
+    font-size: 0.7rem;
+
+}
