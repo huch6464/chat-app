@@ -30,13 +30,17 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'SET_ISACTIVEID' :
     const item = state.users.find(item=>item.id === payload)
     return {...state, isActiveId : item.id}
- case 'DELETE_MSG' :
+  case 'DELETE_MSG' :
     const deleteItem = state.msges.find(item=>item.id === payload);
     const newMsges = state.msges.filter(msg=> msg !== deleteItem)
     return {...state, msges : newMsges}
-    case 'LOGIN':
+  case 'LOGIN':
       state.isLogin = true
-      return { ...state, user : payload }
+      return { ...state, user : payload, isLogin : true }
+  case 'LOGOUT':
+        state.isLogin = false
+        return { ...state, user : null,islogin : false }
+    
   
     
   default:

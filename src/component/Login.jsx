@@ -18,12 +18,15 @@ export default function Login() {
     }
     const handleLogin = async ()=>{
         try{
-     
-        const res = await axios.post('http://huch.local/wp-json/huch/v1/login',form);
-        if(res.data.status === 'success'){
-            localStorage.setItem('user',JSON.stringify(res.data.user));
-            dispatch({type : 'LOGIN' , payload :res.data.user})
-                    }
+        const res1 = await axios.post('http://huch.local/wp-json/jwt-auth/v1/token',form);
+        if(res1.data.token){
+            localStorage.setItem('token',res1.data.token);
+            
+            const res = await axios.post('http://huch.local/wp-json/huch/v1/login', form);
+            
+            dispatch({type : 'LOGIN', payload : res.data.user});
+        }
+
         }catch(err){
                 if(err.response?.data?.message){
                     setError(err.response.data.message)

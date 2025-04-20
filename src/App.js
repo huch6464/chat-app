@@ -4,8 +4,9 @@ import Users from './component/Users';
 import UsersNav from './component/UsersNav';
 import Input from './component/Input';
 import Login from './component/Login';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { userContext } from './context/usersContext';
+
 
 
     
@@ -13,6 +14,13 @@ import { userContext } from './context/usersContext';
     
 
 function App() {
+useEffect(()=>{
+  const  storedUser = localStorage.getItem('user');
+  if(storedUser){
+    dispatch({type : 'login' , payload : JSON.parse(storedUser)})
+  };
+})
+
   const {state,dispatch} = useContext(userContext);
   return (
    state.isLogin === true ?

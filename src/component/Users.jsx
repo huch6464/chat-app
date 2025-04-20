@@ -40,7 +40,8 @@ export default function Users() {
 })
   return (
     <div className="h-100 w-25 bg-primary-subtle overflow-y-scroll d-none d-md-block p-1">
-      <div className='d-flex justify-content-around p-2 bg-light text-primary rounded mb-2'>
+      <div className='d-flex justify-content-around align-items-center p-2 bg-light text-primary rounded mb-2'>
+        <button className='btn btn-outline-primary btn-sm' onClick={()=>{dispatch({type:'LOGOUT'})}}>logout</button>
         <span>{state.user.username}</span>
         <span>{state.user.name}</span>
       </div>

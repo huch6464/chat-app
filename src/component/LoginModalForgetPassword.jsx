@@ -1,4 +1,11 @@
+
+
+
 export default function LoginModalForgetPassword() {
+
+
+
+
     return(
         <div className="modal fade" id="passwordlogin" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">

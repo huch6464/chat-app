@@ -151,7 +151,7 @@ const handleDelete =(msgId)=>{
            <>
            <button onClick={handleInputOthersend} className="btn btn-info text-center " id="inputGroup-sizing-lg">{userActive.username} send </button>
            <input onChange={(e)=>{setMsg(e.target.value)}} value={msg} ref={input}  type="text" className="input-group p-2 fs-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
-           <button onClick={handleInputIsend} className="btn btn-secondary text-center" id="inputGroup-sizing-lg">I send </button>
+           <button onClick={handleInputIsend} className="btn btn-secondary text-center" id="inputGroup-sizing-lg">{state.user.name} send </button>
            </>
            : ''}
            </div>
