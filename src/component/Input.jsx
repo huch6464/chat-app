@@ -135,6 +135,7 @@ const handleDelete =(msgId)=>{
 
   return (
     <>
+    
         {state.isActiveId ?
         <div className="bg-light text-center border d-flex  justify-content-around align-items-center m-0 p-1">
         <img  className="img-fluid" alt='img'/>

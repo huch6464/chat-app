@@ -43,6 +43,10 @@ export default function UsersNav() {
 
   return (
     <div className="offcanvas offcanvas-end h-100  bg-primary-subtle overflow-y-scroll p-1 w-75 " id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div className='d-flex justify-content-around p-2 bg-light text-primary rounded mb-2'>
+    <span>{state.user.username}</span>
+    <span>{state.user.name}</span>
+  </div>
            {userList}
             </div>
   )

@@ -40,9 +40,13 @@ export default function Users() {
 })
   return (
     <div className="h-100 w-25 bg-primary-subtle overflow-y-scroll d-none d-md-block p-1">
-          <div className="list-group ">
-        {userList}
-    </div>
+      <div className='d-flex justify-content-around p-2 bg-light text-primary rounded mb-2'>
+        <span>{state.user.username}</span>
+        <span>{state.user.name}</span>
+      </div>
+      <div className="list-group ">
+          {userList}
+      </div>
     </div>    
   
   )
